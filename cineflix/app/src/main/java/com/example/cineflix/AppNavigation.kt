@@ -26,9 +26,10 @@ fun AppNavigation() {
         composable("movies") { MoviesScreen(navController) }
         composable("review") { ReviewScreen(navController) }
         composable("profile") { ProfileScreen(navController) }
-        composable("details/{movieName}") { backStackEntry ->
-            val movieName = backStackEntry.arguments?.getString("movieName") ?: ""
-            MovieDetailScreen(movieName, navController)
+        composable("details/{movieName}/{posterUrl}") { backStackEntry ->
+            val name = backStackEntry.arguments?.getString("movieName") ?: ""
+            val posterUrl = backStackEntry.arguments?.getString("posterUrl") ?: ""
+            MovieDetailScreen(name, posterUrl, navController)
         }
     }
 }
